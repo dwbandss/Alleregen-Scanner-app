@@ -1,0 +1,199 @@
+/* ===== Global Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ===== Header ===== */
+header {
+  display: flex;
+  align-items: center;
+  padding: 15px 40px;
+  background-color: #f8f9fb;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.logo {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+.top {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #606f9f;
+}
+
+/* ===== Full Background Section ===== */
+.fullimage {
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - 150px); /* Adjust for header + footer */
+  background: url("https://thumbs.dreamstime.com/b/healthy-food-selection-meat-eggs-grains-generative-ai-330470227.jpg") no-repeat center center/cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #1a1a1a;
+  padding: 40px 20px;
+}
+
+/* Optional white overlay for readability */
+.fullimage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.65);
+  z-index: 0;
+  backdrop-filter: blur(2px);
+}
+
+main {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+}
+
+.main {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2a2a2a;
+  margin-bottom: 20px;
+}
+
+.page {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.9;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+}
+
+/* Get Started Button */
+.start {
+  background-color: #606f9f;
+  color: white;
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.start:hover {
+  background-color: #4e5d8a;
+}
+
+/* ===== Guardian Section ===== */
+.guardian-section {
+  position: relative;
+  z-index: 1;
+  padding: 60px 20px;
+  background-color: #f8f9fb;
+  text-align: center;
+  margin-top: 150px;
+  border-radius: 25px;
+}
+
+.guardian-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 50px;
+}
+
+.guardian-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.guardian-card {
+  background: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  padding: 25px;
+  width: 290px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.guardian-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+.guardian-card .emoji {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.guardian-card h2 {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.guardian-card p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* ===== Footer ===== */
+footer {
+  background-color: #606f9f;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: row;
+  /* gap: 10px; */
+}
+
+footer .title {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+footer a {
+  color: #e8e8e8;
+  text-decoration: none;
+  margin: 5px;
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+.last {
+  font-size: 0.8rem;
+  margin-top: 10px;
+
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+  .main {
+    font-size: 1.6rem;
+  }
+
+  .guardian-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+}
