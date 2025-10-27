@@ -1,0 +1,195 @@
+.auth-container{
+  position: relative;
+  width: 100%;
+  /* min-height: calc(100vh - 150px); Adjust for header + footer */
+  background:
+  linear-gradient(135deg, rgba(177, 209, 177, 0.6), rgba(220, 235, 212, 0.7)),
+   url("https://thumbs.dreamstime.com/b/healthy-food-selection-meat-eggs-grains-generative-ai-330470227.jpg") no-repeat center center/cover;
+   background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #1a1a1a;
+  padding: 40px 20px;
+}
+
+
+
+/* .auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f3f4f6;
+} */
+
+.auth-box {
+  display: flex;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  width: 800px;
+  max-width: 90%;
+  margin-top: 50px;
+  height: 512px;
+}
+
+.welcome-section {
+  /* background: 
+  linear-gradient(135deg, rgba(177, 209, 177, 0.2), rgba(220, 235, 212, 0.4)),
+  url("C:\Users\HP\Nodeclass\frontend\src\assets\WhatsApp Image 2025-10-22 at 12.19.37_7c95d403.jpg");
+  background-size: cover; */
+  background-color: #606f9f;
+  color: white;
+  width: 45%;
+  padding: 50px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 20px 0 0 20px;
+}
+
+.welcome-img {
+  width: 100px;
+  margin-bottom: 15px;
+}
+
+.switch-btn {
+  background: #fff;
+  color: #606f9f;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.form-section {
+  width: 55%;
+  padding: 50px 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  width: 100%;
+}
+
+form h2 {
+  color: #222;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+input {
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.forgot-link {
+  display: inline-block;
+  margin-bottom: 15px;
+  color: #5a67d8;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.main-btn {
+  background-color: #606f9f;
+  color: white;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.social-text {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.social-btns {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.social-btns button {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .auth-box {
+    flex-direction: column;
+    width: 90%;
+  }
+
+  .welcome-section,
+  .form-section {
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .welcome-section {
+    border-radius: 20px 20px 0 0;
+  }
+}
+
+.msg-success {
+  color: green;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.msg-error {
+  color: red;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+
+/* 🔹 Back Button - top-left aligned */
+.back-btn {
+  position: absolute;
+  top: 20px;
+  left: 25px;              /* ✅ keep it left-aligned */
+  background-color: transparent;
+  border: none;
+  font-size: 22px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 100;            /* ✅ ensures it stays above other elements */
+}
+
+.back-btn:hover {
+  color: #0056b3;
+  transform: scale(1.1);
+}
+
+/* optional - if your page uses flex or grid, ensure container allows absolute positioning */
+.auth-container {
+  position: relative;      /* ✅ ensures .back-btn positions relative to this */
+  min-height: 100vh;
+}
