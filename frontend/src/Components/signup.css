@@ -38,11 +38,11 @@
 }
 
 .welcome-section {
-  background: 
+  /* background: 
   linear-gradient(135deg, rgba(177, 209, 177, 0.2), rgba(220, 235, 212, 0.4)),
   url("C:\Users\HP\Nodeclass\frontend\src\assets\WhatsApp Image 2025-10-22 at 12.19.37_7c95d403.jpg");
-  background-size: cover;
-  background-color: #5a67d8;
+  background-size: cover; */
+  background-color: #606f9f;
   color: white;
   width: 45%;
   padding: 50px 30px;

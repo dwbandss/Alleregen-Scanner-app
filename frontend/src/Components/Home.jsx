@@ -19,7 +19,7 @@ function Home() {
     </header>
     <div className='fullimage'>
     <main>
-    <h1 className='main'>Tired of the Ingredient Guessing Game?</h1>
+    <h1 className='main'>Scan. Detect. Stay Safe</h1>
     <p className='page'>Ingredient lists are long. Allergens are sneaky. Cross-contamination is a constant worry.<br></br> Standard allergy apps only check for the obvious, leaving you exposed to hidden derivatives and related compounds that can trigger a reaction</p>
     <h1 className='start' onClick={handleGetStarted}>Get Started</h1>
     </main>
@@ -60,16 +60,57 @@ function Home() {
       </div>
     </section>
  </div>
-    <footer>
-      <h1 className='title'>AllergenScanner</h1>
-       <a href='/'>About</a>
-       <a href='/'>Terms & Conditions</a>
-       <a href='/'>Privacy Policy</a>
-       <br></br>
-       <p className='last'>&copy;AllergenScanner.All rights reserved</p>
-    </footer>
+    <footer className="footer">
+  <div className="footer-container">
 
-    
+    {/* === Brand Section === */}
+    <div className="footer-brand">
+      <div className="footer-logo">
+        <i className="fas fa-shield-alt"></i>
+        <h2>AllergenScanner</h2>
+      </div>
+      <p>
+        Your trusted companion for safe food choices.<br />
+        Detect allergens instantly with AI-powered analysis.
+      </p>
+    </div>
+
+    {/* === Quick Links === */}
+    <div className="footer-column">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/">Scanner</a></li>
+        <li><a href="/">Dashboard</a></li>
+      </ul>
+    </div>
+
+    {/* === Resources === */}
+    <div className="footer-column">
+      <h3>Resources</h3>
+      <ul>
+        <li><a href="/">About Allergens</a></li>
+        <li><a href="/">Food Safety</a></li>
+        <li><a href="/">FAQ</a></li>
+      </ul>
+    </div>
+
+    {/* === Connect Section === */}
+    <div className="footer-column">
+      <h3>Connect</h3>
+      <div className="footer-icons">
+        <a href="#"><i className="fab fa-github"></i></a>
+        <a href="#"><i className="fab fa-twitter"></i></a>
+        <a href="mailto:support@allergenscanner.com"><i className="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div className="footer-bottom">
+    <p>&copy; 2025 AllergenScanner. All rights reserved. Built with care for your safety.</p>
+  </div>
+</footer>
+
 
     </>
   )

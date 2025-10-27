@@ -11,7 +11,7 @@ const Signup = () => {
     email: "",
   });
 
-const [message, setMessage] = useState("");          // ✅ Message state
+const [message, setMessage] = useState("");          
   const [messageType, setMessageType] = useState("");
    const navigate = useNavigate();  
 
@@ -25,10 +25,10 @@ const [message, setMessage] = useState("");          // ✅ Message state
     try {
       if (isLogin) {
         // 🔹 LOGIN REQUEST
-        const res = await axios.post("http://localhost:8000/login", {
-  email: formData.email,
-  password: formData.password,
-});
+        const res = await axios.post("http://localhost:5000/api/auth/login", {
+        email: formData.email,
+        password: formData.password,
+    });
         setMessage(res.data.message);
         setMessageType("success");
 
@@ -42,7 +42,7 @@ if (res.data.token) {
         }, 1000);
       } else {
         // 🔹 REGISTER REQUEST
-        const res = await axios.post("http://localhost:8000/register", {
+        const res = await axios.post("http://localhost:5000/api/auth/register", {
           name: formData.name,
           email: formData.email,
           password: formData.password,
@@ -59,7 +59,7 @@ if (res.data.token) {
   return (
     <div className="auth-container">
        <button className="back-btn" onClick={() => navigate("/")}>
-        <i class="fa-solid fa-arrow-left"></i>
+        <i className="fa-solid fa-arrow-left"></i>
       </button>
      
       <div className="auth-box">
