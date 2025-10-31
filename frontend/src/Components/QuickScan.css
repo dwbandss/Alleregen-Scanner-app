@@ -1,0 +1,180 @@
+.quickscan-container {
+  padding: 30px;
+  background: #eef4ef;
+  min-height: 100vh;
+  color: #234b32;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.quickscan-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.quickscan-header p {
+  font-size: 15px;
+  color: #52725c;
+  margin-bottom: 25px;
+}
+
+.quickscan-content {
+  display: flex;
+  gap: 25px;
+  align-items: flex-start;
+}
+
+.upload-section,
+.score-section {
+  background: #f7fbf8;
+  border-radius: 15px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+  padding: 25px;
+}
+
+.upload-section {
+  flex: 2;
+}
+
+.score-section {
+  flex: 1;
+  text-align: center;
+}
+
+.upload-section h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.upload-section p {
+  color: #52725c;
+  font-size: 15px;
+  margin-bottom: 25px;
+}
+
+.upload-box {
+  background: #f2f8f4;
+  border-radius: 20px;
+  border: 2px dashed #c5d6c6;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.upload-icon {
+  font-size: 40px;
+  color: #6ca67a;
+  margin-bottom: 10px;
+}
+
+.upload-text {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.upload-text span {
+  color: #777;
+  font-size: 14px;
+}
+
+.upload-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.photo-btn,
+.barcode-btn {
+  background: #dcefe2;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #2f573b;
+}
+
+.photo-btn:hover,
+.barcode-btn:hover {
+  background: #cde6d5;
+}
+
+.upload-note {
+  font-size: 13px;
+  color: #7b8f80;
+}
+
+.score-section h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.score-circle {
+  width: 140px;
+  height: 140px;
+  border: 8px solid #4cbf77;
+  border-radius: 50%;
+  margin: 0 auto 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle-inner {
+  text-align: center;
+}
+
+.score-percent {
+  font-size: 28px;
+  font-weight: 700;
+  color: #276b47;
+  display: block;
+}
+
+.score-label {
+  color: #5ca078;
+  font-weight: 600;
+}
+
+.based-text {
+  font-size: 14px;
+  color: #5c7463;
+  margin-bottom: 20px;
+}
+
+.progress-list {
+  text-align: left;
+}
+
+.progress-item {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.progress-item span:first-child {
+  width: 100px;
+  font-size: 14px;
+}
+
+.progress-bar {
+  flex: 1;
+  background: #e1e8e2;
+  border-radius: 10px;
+  height: 8px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  background: #3ea866;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.percent {
+  width: 35px;
+  text-align: right;
+  font-size: 13px;
+  color: #3b644c;
+}

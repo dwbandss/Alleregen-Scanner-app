@@ -1,9 +1,15 @@
-/* ---------- GENERAL LAYOUT ---------- */
+/* HowItWorks section styles */
 .howitworks-section {
-  background: linear-gradient(180deg, #eef3ff 0%, #faf4ff 100%);
-  padding: 80px 20px;
+  padding: 2rem 3rem 4rem 3rem; /* Reduced top padding from 4rem to 2rem */
   text-align: center;
-  font-family: "Poppins", sans-serif;
+  background-color: #fdfdff; 
+  border-top: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.howitworks-container {
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .howitworks-title {
@@ -24,55 +30,60 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 60px;
-  margin-bottom: 80px;
+  gap: 2rem; 
+  margin-bottom: 60px;
 }
 
+/* === UPDATED Card Styles === */
 .step-box {
-  background: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(12px);
+  background: #ffffff;
+  /* border: 1px solid #eee;  Optional: Remove border if guardian cards don't have it */
   border-radius: 15px;
-  padding: 30px 40px;
-  width: 250px;
+  padding: 2.5rem 2rem;
+  /* width: 300px; */ /* Remove fixed width */
+  max-width: 340px; /* Match the max-width of guardian-card */
+  width: 100%; /* Allow shrinking on smaller screens */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05); /* Match guardian-card shadow */
   transition: all 0.3s ease-in-out;
+  display: flex; /* Added for alignment if needed */
+  flex-direction: column; /* Added for alignment */
+  align-items: center; /* Center content */
 }
 
 .step-box:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1); /* Match guardian-card hover shadow */
 }
 
-.step-number {
+/* === THIS IS THE ICON STYLING === */
+.step-icon-wrapper {
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 20px auto;
+  /* Background color is set INLINE in the JSX */
 }
 
-/* ---------- COLORS ---------- */
-.step-number.blue {
-  background: linear-gradient(135deg, #3b82f6, #2563eb);
+/* === UPDATED RULE === */
+.step-icon-wrapper svg {
+  width: 32px;
+  height: 32px;
+  /* REMOVE color: currentColor; - color is now set by SVG's fill */
+  /* Keep fill: currentColor; if you want to use CSS color */
+  /* Or remove both if fill is set in SVG */
 }
+/* === END OF ICON STYLING === */
 
-.step-number.purple {
-  background: linear-gradient(135deg, #8b5cf6, #6d28d9);
-}
 
-.step-number.pink {
-  background: linear-gradient(135deg, #ec4899, #db2777);
-}
 
 .step-title {
   font-weight: 600;
   color: #1e1e2f;
   margin-bottom: 10px;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
 }
 
 .step-description {
@@ -83,36 +94,23 @@
 
 /* ---------- CTA SECTION ---------- */
 .cta-section {
-  margin-top: 60px;
+  margin-top: 40px;
 }
 
 .cta-title {
-  font-size: 2rem;
-  font-weight: 700;
-  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #333;
 }
 
 .cta-subtitle {
-  margin-top: 15px;
-  font-size: 1.1rem;
-  color: #4b5563;
+  margin-top: 10px;
+  font-size: 1.05rem;
+  color: #555;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 25px;
 }
 
-.cta-button {
-  margin-top: 25px;
-  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
-  border: none;
-  color: white;
-  padding: 12px 35px;
-  font-size: 1rem;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-.cta-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 15px rgba(139, 92, 246, 0.4);
-}
+/* Button styles for this CTA are in index.css (.btn-gradient-blue) */

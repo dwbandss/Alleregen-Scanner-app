@@ -1,13 +1,15 @@
 import mongoose from "mongoose";
 
-const scanSchema = new mongoose.Schema(
-  {
-    user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-    productName: String,
-    status: { type: String, enum: ["safe", "warning"], default: "safe" },
-    date: { type: Date, default: Date.now },
+const ScanSchema = new mongoose.Schema({
+  foodItem: { type: String, required: true },
+  allergens: { type: [String], default: [] },
+  safetyStatus: {
+    type: String,
+    enum: ["Safe", "Moderate", "Unsafe"],
+    required: true,
   },
-  { timestamps: true }
-);
+  safetyPercent: { type: Number, required: true },
+  dateTime: { type: Date, default: Date.now },
+});
 
-export default mongoose.model("Scan", scanSchema);
+export default mongoose.model("Scan", ScanSchema);

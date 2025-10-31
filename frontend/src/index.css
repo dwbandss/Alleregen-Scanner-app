@@ -1,368 +1,117 @@
-/* ===== Global Reset ===== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-@import "tailwindcss";
+:root {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
 
+  color-scheme: light dark;
+  color: #2d2f39; /* Default text color */
+  background-color: #f8f8fa; /* Light background for the overall app */
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
   font-family: 'Poppins', sans-serif;
+
+  /* --- UPDATED BACKGROUND PATH --- */
+  /* Make sure your file in /public is actually named "background-pattern.png.png" */
+  /* background-image: url('/background-pattern.png.png'); /* <-- Updated filename */
+  /* background-repeat: repeat;
+  background-attachment: fixed;
+  background-size: auto;
+  /* background-color: #f8f8fa; Fallback/base color */
+  /* --- END BACKGROUND STYLES --- */
 }
-
-/* ===== Header ===== */
-/* header {
-  display: flex;
-  align-items: center;
-  padding: 15px 40px;
-  background-color: #f8f9fb;
-  border-bottom: 1px solid #e0e0e0;
-} */
-
-/* ===== Header Styling ===== */
-header {
-  display: flex;
-  justify-content: space-between;  /* logo+title on left, login/signup on right */
-  align-items: center;
-  background-color: #f7f7f7;
-  padding: 10px 35px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  position: relative;
-  top: 0;
-  z-index: 1000;
-}
-
-/* Left side: logo and title */
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-/* Logo Image */
-.logo {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-/* App Name Text */
-.top {
-  font-size: 24px;
-  font-weight: bold;
-  color: #1e3a8a; /* navy blue */
-}
-
-/* Right side: Login and SignUp */
-.header-right {
-  display: flex;
-  gap: 30px;
-}
-
-/* Login & Signup text */
-.left {
-  font-size: 18px;
-  color: #333;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-weight: 500;
-  display: flex;
-  height: 40px;
-  width: 80px;
-  background-color: #606f9f;
-  color: #f5f5f5;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  font-size: small;
-
-}
-
-/* Hover effects for login/signup */
-.left:hover {
-  color: #fafafa;
-  font-size: 18px;
- 
-}
-
-/* Responsive Design (mobile view) */
-@media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    text-align: center;
-    padding: 10px;
-  }
-
-  .header-right {
-    margin-top: 10px;
-  }
-}
-
-
-.logo {
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  margin-right: 12px;
-}
-
-.top {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #606f9f;
-}
-
-/* ===== Full Background Section ===== */
-.fullimage {
-  position: relative;
+#root {
   width: 100%;
-  min-height: calc(100vh - 150px); /* Adjust for header + footer */
-  background: url("https://thumbs.dreamstime.com/b/healthy-food-selection-meat-eggs-grains-generative-ai-330470227.jpg") no-repeat center center/cover;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #1a1a1a;
-  padding: 40px 20px;
 }
 
-/* Optional white overlay for readability */
-.fullimage::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.65);
-  z-index: 0;
-  backdrop-filter: blur(2px);
-}
-
-main {
-  position: relative;
-  z-index: 1;
-  max-width: 800px;
- 
-}
-
-.main {
-   background: linear-gradient(90deg, #4169E1, #8A2BE2, #FF1493);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 700;
-  font-size: 50px;
-  padding: 4px;
-}
-
-.page {
-  font-size: 1rem;
-  color: #333;
-  line-height: 1.9;
-  margin-bottom: 30px;
-  letter-spacing: 1px;
-}
-
-/* Get Started Button */
-.start {
-  background-color: #606f9f;
-  color: white;
-  display: inline-block;
-  padding: 12px 28px;
-  border-radius: 30px;
-  font-size: 1rem;
+/* Base button style */
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.8em 1.5em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
   cursor: pointer;
-  transition: 0.3s ease;
-  width: fit-content;
-  margin: 0 auto;
+  transition: border-color 0.25s, transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  outline: none;
 }
 
-.start:hover {
-  background-color: #4e5d8a;
+/* Gradient Button Style 1 (Primary - Blue/Purple) */
+.btn-gradient {
+  background: linear-gradient(90deg, hwb(228 55% 31%) 0%, #8B5CF6 100%); /* Blue to Purple */
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
 }
 
-/* ===== Guardian Section ===== */
-.guardian-section {
-  position: relative;
-  z-index: 1;
-  padding: 60px 20px;
-  /* background-color: #f8f9fb; */
-  text-align: center;
-  margin-top: 150px;
-  border-radius: 25px;
+.btn-gradient:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.6);
 }
 
-.guardian-title {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #1a1a1a;
-  margin-bottom: 50px;
+.btn-gradient:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(139, 92, 246, 0.3);
 }
 
-.guardian-cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 25px;
+/* Gradient Button Style 2 (Specific for the "How It Works" CTA - Blue) */
+.btn-gradient-blue {
+  background: linear-gradient(90deg, #4a6a9f 0%, #58a6ff 100%); /* Lighter blue gradient */
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
 }
 
-.guardian-card {
-  background: white;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  border-radius: 16px;
-  padding: 25px;
-  width: 290px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.btn-gradient-blue:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
 }
 
-.guardian-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+.btn-gradient-blue:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(59, 130, 246, 0.3);
 }
 
-.guardian-card .emoji {
-  font-size: 2rem;
-  margin-bottom: 10px;
+/* General Link Styling */
+a {
+  font-weight: 500;
+  color: #4F46E5;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #8B5CF6;
 }
 
-.guardian-card h2 {
-  font-size: 1.1rem;
-  color: #333;
-  margin-bottom: 10px;
+/* Ensure images don't overflow containers */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
-.guardian-card p {
-  font-size: 0.95rem;
-  color: #555;
-  line-height: 1.5;
-}
-
-
-/* ===== Footer Styling ===== */
-.footer {
-  background-color: #606f9f;
-  color: #e6e6e6;
-  padding: 60px 8%;
-  font-family: "Poppins", sans-serif;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.footer-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 40px;
-}
-
-.footer-brand {
-  flex: 1 1 250px;
-  max-width: 300px;
-}
-
-.footer-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: #58a6ff;
-}
-
-.footer-logo i {
-  font-size: 1.5rem;
-}
-
-.footer-logo h2 {
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: #fff;
-}
-
-.footer-brand p {
-  font-size: 0.9rem;
-  margin-top: 10px;
-  color: #c9d1d9;
-  line-height: 1.5;
-}
-
-/* ===== Footer Columns ===== */
-.footer-column {
-  flex: 1 1 150px;
-  min-width: 150px;
-}
-
-.footer-column h3 {
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: #fff;
-  margin-bottom: 15px;
-  border-bottom: 2px solid #58a6ff;
-  display: inline-block;
-  padding-bottom: 4px;
-}
-
-.footer-column ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-column li {
-  margin: 8px 0;
-}
-
-.footer-column a {
-  color: #c9d1d9;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.footer-column a:hover {
-  color: #dfbd25;
-}
-
-/* ===== Footer Icons ===== */
-.footer-icons {
-  display: flex;
-  gap: 15px;
-}
-
-.footer-icons a {
-  color: #c9d1d9;
-  font-size: 1.2rem;
-  transition: all 0.3s ease;
-}
-
-.footer-icons a:hover {
-  color: #58a6ff;
-  transform: scale(1.1);
-}
-
-/* ===== Bottom Line ===== */
-.footer-bottom {
-  text-align: center;
-  margin-top: 40px;
-  padding-top: 40px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.footer-bottom p {
-  font-size: 0.85rem;
-  color: #8b949e;
-  letter-spacing: 0.4px;
-}
-
-/* ===== Responsive ===== */
-@media (max-width: 768px) {
-  .footer-container {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 30px;
-  }
-
-  .footer-bottom {
-    text-align: left;
-  }
-}
-
-
+/* Utility classes for text alignment, etc. */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; } 
 
