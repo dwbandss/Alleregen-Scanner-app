@@ -18,7 +18,7 @@ dotenv.config();
 
 // --- MONGO CONNECTION ---
 mongoose
-  .connect("mongodb+srv://Bandana:hellobandana@cluster0.748vw2c.mongodb.net/?appName=Cluster0")
+  .connect(`${process.env.MONGO_URI}`)
   .then(() => console.log("✅ MongoDB Connected!"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
@@ -54,18 +54,31 @@ app.post("/api/ask", async (req, res) => {
   try {
     const model = genAI.getGenerativeModel({
       model: "gemini-pro-latest",
-      systemInstruction: systemInstruction,
+      systemInstruction:
+        "You are an AI allergen assistant. Always give short, accurate, and clear answers about food allergens, ingredients, and safety. " +
+        "Limit your responses to 2–3 concise sentences only.",
     });
 
     const chat = model.startChat({ history: [] });
-    const result = await chat.sendMessage(question);
+    const result = await chat.sendMessage(
+      `Answer briefly and accurately in 2–3 sentences: ${question}`
+    );
 
-    res.json({ answer: result.response.text().trim() });
+    // --- ✨ Limit to 3 sentences maximum ---
+    const answer = result.response.text().trim();
+    const limitedAnswer =
+      answer.split(". ").slice(0, 3).join(". ") +
+      (answer.endsWith(".") ? "" : ".");
+
+    // --- Send final short reply ---
+    res.json({ answer: limitedAnswer });
   } catch (error) {
     console.error("❌ Gemini error:", error);
     res.status(500).json({ answer: "⚠ Error: Unable to fetch AI response." });
   }
 });
+
+
 
 
 // --- MULTER SETUP ---

@@ -1,100 +1,4 @@
-/* .dashboard-wrapper {
-  min-height: 100vh;
-  padding: 2rem;
-  background: rgba(245, 249, 246, 0.8);
-  backdrop-filter: blur(12px);
-  color: #2e473b;
-  font-family: "Poppins", sans-serif;
-}
 
-.dashboard-header h1 {
-  font-size: 1.8rem;
-  font-weight: 600;
-  color: #204e3b;
-  margin-bottom: 1.5rem;
-}
-
-.dashboard-header span {
-  color: #007b55;
-}
-
-.dashboard-content {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.dashboard-card {
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 16px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-  backdrop-filter: blur(8px);
-}
-
-.dashboard-card.large {
-  width: 100%;
-}
-
-.dashboard-row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-}
-
-.dashboard-card h2,
-.dashboard-card h3 {
-  margin-bottom: 0.5rem;
-  color: #204e3b;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 1rem;
-}
-
-th,
-td {
-  padding: 0.75rem 1rem;
-  text-align: left;
-  border-bottom: 1px solid #dce7e2;
-}
-
-th {
-  color: #4d665a;
-  font-weight: 600;
-}
-
-.safe {
-  color: #2ca66e;
-  font-weight: 600;
-}
-
-.moderate {
-  color: #e6a700;
-  font-weight: 600;
-}
-
-.unsafe {
-  color: #d9534f;
-  font-weight: 600;
-}
-
-.placeholder-chart {
-  height: 160px;
-  background: rgba(230, 245, 239, 0.7);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #4d665a;
-  font-size: 1.5rem;
-} */
- 
-/* ===== HOME1 CONTAINER ===== */
-/* === Mint Blur Background === */
-/* ===== General Container ===== */
 .home1-container {
   min-height: 100vh;
   background: linear-gradient(
@@ -103,15 +7,15 @@ th {
       rgba(200, 255, 240, 0.75),
       rgba(255, 255, 255, 0.9)
     ),
-    url("../assets/Screenshot 2025-10-31 163529.png") center/cover
-      no-repeat;
+    url("../assets/Screenshot 2025-10-31 163529.png") center/cover no-repeat;
   backdrop-filter: blur(10px);
   color: #1a1a1a;
-  padding: 2rem;
+  padding: 1.5rem 2rem;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
   font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
 }
 
 /* ===== Glass Effect Base ===== */
@@ -120,12 +24,12 @@ th {
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(60, 100, 90, 0.15);
+  box-shadow: 0 6px 28px rgba(60, 100, 90, 0.12);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .glass-bg:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 36px rgba(90, 140, 110, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(90, 140, 110, 0.2);
 }
 
 /* ===== Header ===== */
@@ -133,14 +37,14 @@ th {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 2rem;
-  background: rgba(255, 255, 255, 0.35);
-  border-radius: 18px;
+  padding: 1.2rem 1.6rem;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 16px;
   backdrop-filter: blur(15px);
 }
 
 .header-left h1 {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 600;
   color: #004d40;
 }
@@ -151,29 +55,31 @@ th {
 
 .header-left p {
   color: #3a4a4a;
-  margin-top: 0.5rem;
+  margin-top: 0.3rem;
+  font-size: 0.9rem;
 }
 
 .profile-logo {
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
+  width: 55px;
+  height: 55px;
+  object-fit: cover;
   border-radius: 50%;
   border: 2px solid rgba(0, 150, 136, 0.3);
-  box-shadow: 0 0 10px rgba(0, 150, 136, 0.4);
+  box-shadow: 0 0 10px rgba(0, 150, 136, 0.3);
 }
 
 /* ===== Stats Grid ===== */
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.2rem;
 }
 
 .stat-card {
-  padding: 1.5rem;
+  padding: 1.2rem;
   color: #003d33;
   position: relative;
+  border-radius: 14px;
 }
 
 .stat-header {
@@ -183,19 +89,19 @@ th {
 }
 
 .stat-info h3 {
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  margin-bottom: 0.4rem;
   color: #00695c;
 }
 
 .stat-value {
-  font-size: 2rem;
+  font-size: 1.7rem;
   font-weight: 600;
 }
 
 .stat-change {
-  font-size: 0.85rem;
-  margin-top: 0.4rem;
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
 }
 
 .stat-change.positive {
@@ -206,7 +112,7 @@ th {
 }
 
 .stat-icon {
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: #009688;
   opacity: 0.9;
 }
@@ -217,13 +123,13 @@ th {
 }
 
 .section-header h2 {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: #004d40;
 }
 
 .section-header p {
   color: #546e7a;
-  margin-top: 0.3rem;
+  margin-top: 0.2rem;
   font-size: 0.9rem;
 }
 
@@ -231,6 +137,7 @@ th {
 .scan-table-container {
   overflow-x: auto;
   margin-top: 1rem;
+  border-radius: 12px;
 }
 
 .scan-table {
@@ -244,13 +151,15 @@ th {
   background: rgba(0, 150, 136, 0.1);
   color: #004d40;
   text-align: left;
-  padding: 0.9rem 1rem;
+  padding: 0.8rem 1rem;
   font-weight: 600;
+  font-size: 0.95rem;
 }
 
 .scan-table td {
-  padding: 0.8rem 1rem;
+  padding: 0.7rem 1rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  font-size: 0.9rem;
 }
 
 .scan-table tr:hover {
@@ -324,15 +233,16 @@ th {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 10;
 }
 
 .profile-popup {
-  width: 350px;
+  width: 340px;
   padding: 2rem;
   text-align: center;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.7);
   border-radius: 20px;
-  box-shadow: 0 8px 40px rgba(0, 128, 128, 0.2);
+  box-shadow: 0 8px 40px rgba(0, 128, 128, 0.25);
   animation: popupFade 0.4s ease;
 }
 
@@ -386,18 +296,59 @@ th {
 
 /* ===== Animations ===== */
 .fade-in {
-  animation: fadeIn 1s ease;
+  animation: fadeIn 0.8s ease;
 }
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(15px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
+
+/* ===== Responsive Fixes ===== */
+@media (max-width: 768px) {
+  .home1-header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .profile-logo {
+    width: 50px;
+    height: 50px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .scan-history-section {
+    padding: 1rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-card {
+    padding: 1rem;
+  }
+
+  .stat-value {
+    font-size: 1.4rem;
+  }
+}
+
 
 
 

@@ -92,19 +92,19 @@ function Home() {
               <div className="guardian-icon-wrapper"><ShieldPlateIcon /></div>
               <h3>Shield Your Plate</h3>
               <p>Navigate grocery aisles with confidence. Instantly flag allergens.</p>
-              <button className="btn-gradient-blue">Start Scanning Today</button>
+              <button className="btn-gradient-blue">Start Smart Scan</button>
             </div>
             <div className="guardian-card personalized-mind" onClick={openAuthModal}>
               <div className="guardian-icon-wrapper"><PersonHeartIcon /></div>
               <h3>Personalized Peace of Mind</h3>
               <p>Create detailed profiles. Pinpoint trace amounts and alerts.</p>
-              <button className="btn-gradient-blue">Start Scanning Today</button>
+              <button className="btn-gradient-blue">Create Smart Profile</button>
             </div>
             <div className="guardian-card secure-hub" onClick={openAuthModal}>
               <div className="guardian-icon-wrapper"><GearsIcon /></div>
               <h3>Smart, Secure Health Hub</h3>
               <p>Manage complex diets, track ingredients, and gain insights.</p>
-              <button className="btn-gradient-blue">Start Scanning Today</button>
+              <button className="btn-gradient-blue">Track Allergens</button>
             </div>
           </div>
         </section>

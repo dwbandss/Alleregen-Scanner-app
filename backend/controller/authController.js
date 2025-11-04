@@ -2,7 +2,7 @@ import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import Profile from "../models/Profile.js";
-
+import sendEmail from "../utils/sendEmail.js";
 
 const JWT_SECRET = "my_default_secret";
 
@@ -60,6 +60,12 @@ export const loginUser = async (req, res) => {
 
     
     const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: "1h" });
+
+    await sendEmail(
+  user.email,
+  "Login Notification",
+  `Hello ${user.name || "User"},\n\nYou just logged into your account.\nIf this wasn’t you, please reset your password immediately.\n\n– Allergen Scanner Team`
+);
 
     res
       .status(200)

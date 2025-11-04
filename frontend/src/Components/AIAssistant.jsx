@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Aiassients.css";
 import { FaPaperPlane } from "react-icons/fa";
 import axios from "axios";
+import API from "../api/api.js"
 
 function AIScreen() {
   const [messages, setMessages] = useState([
@@ -19,7 +20,7 @@ function AIScreen() {
     setLoading(true);
 
     try {
-      const res = await axios.post("http://localhost:5000/api/ask", {
+      const res = await API.post("/ask", {
         question: input,
       });
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
   FaHome,
   FaUser,
@@ -8,90 +8,77 @@ import {
   FaRobot,
   FaBook,
   FaSignOutAlt,
+  FaBars,
   FaTimes,
+  FaBoxOpen,
 } from "react-icons/fa";
 import "./sidebar.css";
 import logo from "../assets/Final Logo.png";
 
-const Sidebar = ({
-  isOpen,
-  setActivePage,
-  handleLogout,
-  toggleSidebar, // Parent toggler
-}) => {
+const Sidebar = ({ isOpen, setActivePage, handleLogout, toggleSidebar }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const sidebarRef = useRef(null); // 👈 reference to sidebar
 
-
-
-  // Detect screen width changes
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // 👇 Close sidebar when clicking outside of it
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isOpen && sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+        toggleSidebar(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isOpen, toggleSidebar]);
+
   const menuItems = [
-    { label: "Home", icon: <FaHome /> , path:"/dashboard"},
-    { label: "My Profile", icon: <FaUser />,path:"/dashboard/myprofile" },
+    { label: "Home", icon: <FaHome />, path: "/dashboard" },
+    { label: "My Profile", icon: <FaUser />, path: "/dashboard/myprofile" },
     { label: "Quick Scan", icon: <FaBolt /> },
     { label: "Scan History", icon: <FaHistory /> },
     { label: "Reports", icon: <FaFileAlt /> },
     { label: "AI Assistant", icon: <FaRobot /> },
     { label: "Learn", icon: <FaBook /> },
+    { label: "Subscription", icon: <FaBoxOpen /> },
   ];
 
-  // Handle menu clicks — close sidebar immediately
   const handleMenuClick = (page) => {
     setActivePage(page);
-    toggleSidebar(false); // Close sidebar after click
+    toggleSidebar(false); // 👈 close sidebar on any menu click
   };
 
   const handleLogoutClick = () => {
-    try {
-      handleLogout(); // remove token etc.
-      toggleSidebar(false);
-      // Small delay ensures sidebar closes before redirect
-      setTimeout(() => {
-        window.location.href = "/";
-      }, 100);
-    } catch (err) {
-      console.error("Logout failed:", err);
-      window.location.href = "/";
-    }
-  };
-
-  const handleOverlayClick = () => {
+    handleLogout();
     toggleSidebar(false);
+    setTimeout(() => {
+      window.location.href = "/";
+    }, 100);
   };
 
   return (
     <>
-      <aside className={`sidebar ${isOpen ? "open" : "closed"}`}>
-        {/* Sidebar Header */}
+      {/* Toggle Button */}
+      <button
+        className={`sidebar-toggle ${isOpen ? "active" : ""}`}
+        onClick={() => toggleSidebar(!isOpen)}
+      >
+        {isOpen ? <FaTimes /> : <FaBars />}
+      </button>
+
+      {/* Sidebar */}
+      <aside ref={sidebarRef} className={`sidebar ${isOpen ? "open" : "closed"}`}>
         <div className="sidebar-header">
           <div className="sidebar-logo-wrapper">
-            <img
-              src={logo}
-              alt="AllerScan Logo"
-              className="sidebar-logo"
-            />
+            <img src={logo} alt="AllerScan Logo" className="sidebar-logo" />
           </div>
           <h2 className="sidebar-title">AllerScan</h2>
-
-    
-
-          {/* Close Button (Mobile Only) */}
-          {isMobile && (
-            <button
-              className="inside-sidebar"
-              onClick={() => toggleSidebar(false)}
-            >
-              <FaTimes />
-            </button>
-          )}
         </div>
 
-        {/* Sidebar Menu */}
         <nav className="sidebar-menu">
           {menuItems.map((item) => (
             <button
@@ -105,7 +92,6 @@ const Sidebar = ({
           ))}
         </nav>
 
-        {/* Logout Button */}
         <div className="sidebar-footer">
           <button className="logout-btn" onClick={handleLogoutClick}>
             <FaSignOutAlt />
@@ -114,11 +100,11 @@ const Sidebar = ({
         </div>
       </aside>
 
-      {/* Overlay (click to close) */}
-      {isOpen && (
+      {/* Overlay for mobile */}
+      {isOpen && isMobile && (
         <div
-          className={`sidebar-overlay ${isOpen ? "active" : ""}`}
-          onClick={handleOverlayClick}
+          className="sidebar-overlay active"
+          onClick={() => toggleSidebar(false)}
         />
       )}
     </>

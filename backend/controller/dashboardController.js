@@ -2,16 +2,21 @@ import Scan from "../models/Scan.js";
 
 export const getUserDashboard = async (req, res) => {
   try {
+    if (!req.user) {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
+
     res.json({
-      message: "Dashboard data fetched",
+      message: "Dashboard data fetched successfully",
       user: {
         id: req.user._id,
         name: req.user.name,
         email: req.user.email,
       },
     });
-  } catch {
-    res.status(500).json({ message: "Server error" });
+  } catch (error) {
+    console.error("Error in getUserDashboard:", error);
+    res.status(500).json({ message: "Server error in getUserDashboard" });
   }
 };
 
@@ -23,6 +28,7 @@ export const getDashboardStats = async (req, res) => {
 
     res.json({ total, safe, warnings });
   } catch (error) {
+    console.error("Error fetching stats:", error);
     res.status(500).json({ message: "Error fetching stats" });
   }
 };

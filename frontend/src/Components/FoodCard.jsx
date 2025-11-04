@@ -1,12 +1,13 @@
 import axios from "axios";
 import { toast } from "react-toastify";
+import API from '../api/api.js'
 
 function FoodCard({ food }) {
   const handleAddFood = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.post(
-        "http://localhost:5000/api/profile/add-food",
+      const res = await API.post(
+        "/profile/add-food",
         {
           name: food.name,
           calories: food.calories,

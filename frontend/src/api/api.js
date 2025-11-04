@@ -1,8 +1,13 @@
+// src/ap// src/api/api.js
 import axios from "axios";
 
+// Base URL: from .env file or fallback
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+
+// Create a global axios instance
 const API = axios.create({
-  baseURL: "http://localhost:5000/api/users",
+  baseURL: `${BASE_URL}/api`,
 });
 
-export const registerUser = (userData) => API.post("/register", userData);
-export const loginUser = (userData) => API.post("/login", userData);
+
+export default API;
