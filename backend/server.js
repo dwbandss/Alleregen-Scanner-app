@@ -14,6 +14,8 @@ import dashboardRoutes from "./routes/dashboardRoutes.js";
 import preferenceRoutes from "./routes/preferenceRoutes.js";
 import scanRoutes from "./routes/scanRoutes.js";
 import passwordRoutes from "./routes/passwordRoutes.js";
+import contactRoutes from "./routes/contactRoutes.js";
+
 
 dotenv.config();
 
@@ -37,7 +39,7 @@ app.use("/api/preferences", preferenceRoutes);
 app.use("/api/scan", scanRoutes);
 app.use("/api/profile", profileRoutes);
 app.use("/api/password", passwordRoutes);
-
+app.use("/api/contact", contactRoutes);
 
 // --- GEMINI AI SETUP ---
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);

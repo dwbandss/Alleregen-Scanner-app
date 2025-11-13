@@ -30,7 +30,7 @@ const ShieldCheckIcon = () => (
 );
 
 
-const HowItWorks = () => {
+const HowItWorks = ({ openAuthModal }) => {
   const navigate = useNavigate();
 
   return (
@@ -90,7 +90,7 @@ const HowItWorks = () => {
           <p className="cta-subtitle">
             Join thousands of users who trust AllerScan to keep them safe from food allergens
           </p>
-          <button className="btn-gradient-blue" onClick={() => navigate('/signup')}>
+          <button className="btn-gradient-blue" onClick={openAuthModal}>
             Start Your Free Account
           </button>
         </div>

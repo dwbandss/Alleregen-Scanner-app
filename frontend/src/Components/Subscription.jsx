@@ -5,8 +5,9 @@ const Subscription = () => {
   const [billingCycle, setBillingCycle] = useState('monthly');
   const [openFaq, setOpenFaq] = useState(null);
 
+  // Toggle FAQ open/close
   const toggleFaq = (index) => {
-    setOpenFaq(openFaq === index ? null : index);
+    setOpenFaq(prev => (prev === index ? null : index));
   };
 
   const freePlanFeatures = [
@@ -39,35 +40,10 @@ const Subscription = () => {
     { feature: 'New Features Access', free: false, premium: true }
   ];
 
-  // const stats = [
-  //   { icon: '👥', label: '50,000+ Active Users' },
-  //   { icon: '❤️', label: '4.9/5 User Rating' },
-  //   { icon: '📈', label: '99.2% Accuracy Rate' },
-  //   { icon: '🛡️', label: 'Bank-Level Security' }
-  // ];
-
   const testimonials = [
-    {
-      name: 'Riya',
-      age: '26',
-      avatar: '👩‍💼',
-      rating: 5,
-      text: '"ALLERSCAN helped me finally eat stress-free. Life-changing!"'
-    },
-    {
-      name: 'Arjun',
-      age: '34',
-      avatar: '👨‍💼',
-      rating: 5,
-      text: '"Worth every rupee for the peace of mind it gives me daily."'
-    },
-    {
-      name: 'Priya',
-      age: '29',
-      avatar: '👩‍🔬',
-      rating: 5,
-      text: '"The AI assistant is incredibly smart. Saved me multiple times!"'
-    }
+    { name: 'Riya', age: '26', avatar: '👩‍💼', rating: 5, text: '"ALLERSCAN helped me finally eat stress-free. Life-changing!"' },
+    { name: 'Arjun', age: '34', avatar: '👨‍💼', rating: 5, text: '"Worth every rupee for the peace of mind it gives me daily."' },
+    { name: 'Priya', age: '29', avatar: '👩‍🔬', rating: 5, text: '"The AI assistant is incredibly smart. Saved me multiple times!"' }
   ];
 
   const faqs = [
@@ -92,11 +68,6 @@ const Subscription = () => {
 
       {/* Hero Section */}
       <section className="hero-section">
-        <div className="trust-badge">
-          {/* <span className="trust-icon">✨</span> */}
-          {/* <span>Trusted by 50,000+ users</span> */}
-        </div>
-        
         <h1 className="hero-title">Choose Your Plan — Scan Smarter, Live Healthier</h1>
         <p className="hero-subtitle">Find your perfect protection level. Start free or unlock unlimited access.</p>
 
@@ -123,13 +94,11 @@ const Subscription = () => {
             <h2 className="plan-title">Free Plan</h2>
             <p className="plan-description">For casual users who want to stay safe occasionally</p>
           </div>
-          
           <div className="price-container">
             <span className="currency">₹</span>
             <span className="price">0</span>
             <span className="period">/ month</span>
           </div>
-
           <ul className="features-list">
             {freePlanFeatures.map((feature, index) => (
               <li key={index} className="feature-item">
@@ -138,25 +107,21 @@ const Subscription = () => {
               </li>
             ))}
           </ul>
-
           <button className="cta-button secondary">Start for Free</button>
         </div>
 
         {/* Premium Plan */}
         <div className="pricing-card premium">
           <div className="popular-badge">⭐ Most Popular</div>
-          
           <div className="card-header">
             <h2 className="plan-title">Premium Plan</h2>
             <p className="plan-description">For proactive users who want complete peace of mind</p>
           </div>
-          
           <div className="price-container">
             <span className="currency">₹</span>
             <span className="price">{billingCycle === 'monthly' ? '199' : '1,990'}</span>
             <span className="period">/ {billingCycle === 'monthly' ? 'month' : 'year'}</span>
           </div>
-
           <ul className="features-list">
             {premiumPlanFeatures.map((feature, index) => (
               <li key={index} className="feature-item">
@@ -165,11 +130,7 @@ const Subscription = () => {
               </li>
             ))}
           </ul>
-
-          <button className="cta-button primary">
-            Go Premium ✨
-          </button>
-
+          <button className="cta-button primary">Go Premium ✨</button>
           <div className="trust-badges">
             <span className="trust-item">🛡️ Secure Payment</span>
             <span className="trust-item">⚡ Instant Access</span>
@@ -180,43 +141,33 @@ const Subscription = () => {
       {/* Comparison Table */}
       <section className="comparison-section">
         <h2 className="section-title">Detailed Feature Comparison</h2>
-        
         <div className="comparison-table">
           <div className="table-header">
             <div className="table-cell header-cell">Feature</div>
             <div className="table-cell header-cell">Free</div>
             <div className="table-cell header-cell">Premium</div>
           </div>
-          
           {comparisonData.map((row, index) => (
             <div key={index} className="table-row">
               <div className="table-cell feature-cell">{row.feature}</div>
               <div className="table-cell value-cell">
                 {typeof row.free === 'boolean' ? (
                   row.free ? <span className="check-icon">✓</span> : <span className="cross-icon">✕</span>
-                ) : (
-                  row.free
-                )}
+                ) : row.free}
               </div>
               <div className="table-cell value-cell premium-cell">
                 {typeof row.premium === 'boolean' ? (
                   row.premium ? <span className="check-icon">✓</span> : <span className="cross-icon">✕</span>
-                ) : (
-                  row.premium
-                )}
+                ) : row.premium}
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Stats Section */}
-      
-
       {/* Testimonials */}
       <section className="testimonials-section">
         <h2 className="section-title">What Our Users Say</h2>
-        
         <div className="testimonials-grid">
           {testimonials.map((testimonial, index) => (
             <div key={index} className="testimonial-card">
@@ -225,9 +176,7 @@ const Subscription = () => {
                 <div className="user-info">
                   <h4 className="user-name">{testimonial.name}, {testimonial.age}</h4>
                   <div className="rating">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <span key={i} className="star">⭐</span>
-                    ))}
+                    {[...Array(testimonial.rating)].map((_, i) => <span key={i} className="star">⭐</span>)}
                   </div>
                 </div>
               </div>
@@ -240,11 +189,11 @@ const Subscription = () => {
       {/* FAQ Section */}
       <section className="faq-section">
         <h2 className="section-title">Frequently Asked Questions</h2>
-        
         <div className="faq-container">
           {faqs.map((faq, index) => (
-            <div key={index} className="faq-item">
-              <button 
+            <div key={index} className={`faq-item ${openFaq === index ? 'active' : ''}`}>
+              <button
+                type="button"
                 className={`faq-question ${openFaq === index ? 'active' : ''}`}
                 onClick={() => toggleFaq(index)}
               >
@@ -262,7 +211,7 @@ const Subscription = () => {
       </section>
 
       {/* Footer */}
-      <footer className="footer">
+      {/* <footer className="footer">
         <nav className="footer-nav">
           <a href="#home">Home</a>
           <a href="#about">About</a>
@@ -272,12 +221,11 @@ const Subscription = () => {
           <a href="#privacy">Privacy</a>
           <a href="#terms">Terms</a>
         </nav>
-        
         <div className="footer-brand">
           <p className="copyright">© 2025 ALLERSCAN</p>
           <p className="tagline">"Eat Smart. Live Safe."</p>
         </div>
-      </footer>
+      </footer> */}
     </div>
   );
 };

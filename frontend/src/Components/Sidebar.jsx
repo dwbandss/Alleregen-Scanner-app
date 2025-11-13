@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   FaHome,
   FaUser,
@@ -16,8 +17,9 @@ import "./sidebar.css";
 import logo from "../assets/Final Logo.png";
 
 const Sidebar = ({ isOpen, setActivePage, handleLogout, toggleSidebar }) => {
+  const navigate = useNavigate();
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const sidebarRef = useRef(null); // 👈 reference to sidebar
+  const sidebarRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
@@ -25,7 +27,7 @@ const Sidebar = ({ isOpen, setActivePage, handleLogout, toggleSidebar }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // 👇 Close sidebar when clicking outside of it
+  // Close sidebar on outside click
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (isOpen && sidebarRef.current && !sidebarRef.current.contains(event.target)) {
@@ -37,27 +39,30 @@ const Sidebar = ({ isOpen, setActivePage, handleLogout, toggleSidebar }) => {
   }, [isOpen, toggleSidebar]);
 
   const menuItems = [
-    { label: "Home", icon: <FaHome />, path: "/dashboard" },
-    { label: "My Profile", icon: <FaUser />, path: "/dashboard/myprofile" },
-    { label: "Quick Scan", icon: <FaBolt /> },
-    { label: "Scan History", icon: <FaHistory /> },
-    { label: "Reports", icon: <FaFileAlt /> },
-    { label: "AI Assistant", icon: <FaRobot /> },
-    { label: "Learn", icon: <FaBook /> },
-    { label: "Subscription", icon: <FaBoxOpen /> },
+    { label: "Home", icon: <FaHome />, path: "/dashboard/home" },
+    { label: "My Profile", icon: <FaUser />, path: "/dashboard/my-profile" },
+    { label: "Quick Scan", icon: <FaBolt />, path: "/dashboard/quick-scan" },
+    { label: "Scan History", icon: <FaHistory />, path: "/dashboard/scan-history" },
+    { label: "Reports", icon: <FaFileAlt />, path: "/dashboard/reports" },
+    { label: "AI Assistant", icon: <FaRobot />, path: "/dashboard/assistant" },
+    { label: "Learn", icon: <FaBook />, path: "/dashboard/learn" },
+    { label: "Subscription", icon: <FaBoxOpen />, path: "/dashboard/subscription" },
   ];
 
-  const handleMenuClick = (page) => {
+  const handleMenuClick = (page, path) => {
     setActivePage(page);
-    toggleSidebar(false); // 👈 close sidebar on any menu click
+    navigate(path);
+    toggleSidebar(false);
   };
 
   const handleLogoutClick = () => {
-    handleLogout();
-    toggleSidebar(false);
-    setTimeout(() => {
-      window.location.href = "/";
-    }, 100);
+    // Clear auth
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    if (handleLogout) handleLogout();
+
+    // Navigate immediately without closing sidebar animation
+    navigate("/", { replace: true });
   };
 
   return (
@@ -71,7 +76,11 @@ const Sidebar = ({ isOpen, setActivePage, handleLogout, toggleSidebar }) => {
       </button>
 
       {/* Sidebar */}
-      <aside ref={sidebarRef} className={`sidebar ${isOpen ? "open" : "closed"}`}>
+      <aside
+        ref={sidebarRef}
+        className={`sidebar ${isOpen ? "open" : "closed"}`}
+        style={{ pointerEvents: isOpen ? "auto" : "none" }} // Prevent click during closed state
+      >
         <div className="sidebar-header">
           <div className="sidebar-logo-wrapper">
             <img src={logo} alt="AllerScan Logo" className="sidebar-logo" />
@@ -84,7 +93,7 @@ const Sidebar = ({ isOpen, setActivePage, handleLogout, toggleSidebar }) => {
             <button
               key={item.label}
               className="sidebar-item"
-              onClick={() => handleMenuClick(item.label)}
+              onClick={() => handleMenuClick(item.label, item.path)}
             >
               {item.icon}
               <span>{item.label}</span>
@@ -100,7 +109,7 @@ const Sidebar = ({ isOpen, setActivePage, handleLogout, toggleSidebar }) => {
         </div>
       </aside>
 
-      {/* Overlay for mobile */}
+      {/* Mobile Overlay */}
       {isOpen && isMobile && (
         <div
           className="sidebar-overlay active"

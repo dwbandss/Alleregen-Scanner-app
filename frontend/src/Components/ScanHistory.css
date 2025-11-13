@@ -1,23 +1,34 @@
-
-/* ===== Scan History Container ===== */
-/* ===== Main Container ===== */
-.scan-history-container {
-  padding: 2rem 3rem;
+/* ===== Full Page Wrapper ===== */
+.scan-history-page {
   min-height: 100vh;
-  font-family: "Poppins", sans-serif;
-  color: #033b2b;
-  background: rgba(240, 255, 245, 0.5); /* mint-cream tint */
+  width: 100%;
+  background: rgba(240, 255, 245, 0.5);
   backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  transition: background 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
-/* ===== Header Section ===== */
+/* ===== Main Container ===== */
+.scan-history-container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+/* ===== Header ===== */
 .header-section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
+  flex-wrap: wrap; /* important for small screens */
 }
 
 .header-section h2 {
@@ -29,28 +40,30 @@
 .header-section p {
   color: #046b57;
   font-size: 1rem;
-  margin-top: 0.3rem;
+  flex: 1 1 100%; /* forces paragraph to wrap */
+  margin-top: 5px;
   opacity: 0.9;
 }
 
-/* ===== Summary Cards Grid ===== */
+/* ===== Summary Grid ===== */
 .summary-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1.2rem;
-  margin-bottom: 2.5rem;
+  gap: 20px;
+  width: 100%;
 }
 
+/* ===== Summary Cards ===== */
 .summary-card {
-  background: rgba(245, 255, 250, 0.65); /* frosted mint-cream */
+  background: rgba(245, 255, 250, 0.65);
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border-radius: 18px;
-  box-shadow: 0 6px 20px rgba(100, 150, 120, 0.15);
-  padding: 1.4rem;
+  padding: 1.5rem;
   text-align: center;
+  box-shadow: 0 6px 20px rgba(100, 150, 120, 0.15);
   border: 1px solid rgba(120, 200, 160, 0.25);
   transition: all 0.3s ease;
+  min-width: 0; /* ensures proper shrinking */
 }
 
 .summary-card:hover {
@@ -59,38 +72,69 @@
   background: rgba(245, 255, 250, 0.85);
 }
 
-.summary-card p {
-  font-weight: 500;
-  color: #034837;
-  letter-spacing: 0.3px;
-}
-
 .summary-card h3 {
   font-size: 2rem;
-  margin-top: 0.4rem;
   color: #025845;
 }
 
-/* Colored Variants */
-.summary-card.yellow {
-  border-left: 5px solid #f5c542;
+.summary-card p {
+  font-weight: 500;
+  color: #034837;
 }
 
-.summary-card.green {
-  border-left: 5px solid #00b894;
+/* ===== History Table ===== */
+.history-table {
+  background: rgba(245, 255, 250, 0.5);
+  backdrop-filter: blur(15px);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0, 100, 80, 0.15);
+  overflow-x: auto;
+  border: 1px solid rgba(160, 220, 180, 0.3);
+  min-width: 0; /* allows table to shrink inside container */
 }
 
-.summary-card.red {
-  border-left: 5px solid #e74c3c;
+.history-table h3 {
+  font-size: 1.4rem;
+  color: #034f3c;
+  margin-bottom: 1.3rem;
 }
 
-/* ===== Loader Styling ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 0.9rem 1.2rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(100, 180, 150, 0.2);
+}
+
+tbody tr:hover {
+  background: rgba(230, 255, 240, 0.5);
+}
+
+/* ===== Status Badges ===== */
+.status-badge {
+  padding: 0.35rem 0.8rem;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: white;
+}
+
+.status-badge.green { background: #00b894; }
+.status-badge.yellow { background: #f4c542; color: #2e2e2e; }
+.status-badge.red { background: #e74c3c; }
+
+/* ===== Loader ===== */
 .loader-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 80vh;
+  min-height: 60vh;
   text-align: center;
 }
 
@@ -104,114 +148,24 @@
 }
 
 @keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+  to { transform: rotate(360deg); }
 }
 
-.loader-container p {
-  margin-top: 1rem;
-  color: #045f46;
-  font-size: 1.1rem;
+/* ===== Fully Responsive ===== */
+@media (max-width: 1024px) {
+  .scan-history-container { padding: 25px; }
+  .header-section h2 { font-size: 1.8rem; }
+  .summary-card h3 { font-size: 1.6rem; }
 }
 
-/* ===== History Table Section ===== */
-.history-table {
-  background: rgba(245, 255, 250, 0.5);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  padding: 2rem;
-  border-radius: 20px;
-  box-shadow: 0 6px 20px rgba(0, 100, 80, 0.15);
-  overflow-x: auto;
-  border: 1px solid rgba(160, 220, 180, 0.3);
-}
-
-.history-table h3 {
-  margin-bottom: 1.3rem;
-  font-size: 1.4rem;
-  color: #034f3c;
-}
-
-.no-scans {
-  text-align: center;
-  color: #066a4f;
-  font-weight: 500;
-  margin: 2rem 0;
-}
-
-/* ===== Table Styles ===== */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.95rem;
-}
-
-thead {
-  background: rgba(200, 255, 230, 0.6);
-  color: #033c2d;
-  backdrop-filter: blur(8px);
-}
-
-th,
-td {
-  padding: 0.9rem 1.2rem;
-  text-align: center;
-  border-bottom: 1px solid rgba(100, 180, 150, 0.2);
-}
-
-tbody tr {
-  transition: background 0.3s ease;
-}
-
-tbody tr:hover {
-  background: rgba(230, 255, 240, 0.5);
-}
-
-/* ===== Status Badges ===== */
-.status-badge {
-  padding: 0.35rem 0.8rem;
-  border-radius: 30px;
-  font-weight: 600;
-  color: white;
-  font-size: 0.85rem;
-}
-
-.status-badge.green {
-  background: #00b894;
-}
-
-.status-badge.yellow {
-  background: #f4c542;
-  color: #2e2e2e;
-}
-
-.status-badge.red {
-  background: #e74c3c;
-}
-
-/* ===== Responsive Design ===== */
 @media (max-width: 768px) {
-  .scan-history-container {
-    padding: 1.2rem;
-  }
-
-  .header-section h2 {
-    font-size: 1.6rem;
-  }
-
-  table {
-    font-size: 0.85rem;
-  }
-
-  .summary-grid {
-    grid-template-columns: 1fr 1fr;
-  }
+  .scan-history-container { padding: 20px; }
+  .header-section { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .summary-grid { grid-template-columns: 1fr 1fr; gap: 15px; }
 }
 
 @media (max-width: 500px) {
-  .summary-grid {
-    grid-template-columns: 1fr;
-  }
+  .summary-grid { grid-template-columns: 1fr; gap: 10px; }
+  table, th, td { font-size: 0.75rem; padding: 0.5rem 0.6rem; }
+  .history-table { padding: 1rem; }
 }
-

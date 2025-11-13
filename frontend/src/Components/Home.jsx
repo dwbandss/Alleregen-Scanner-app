@@ -1,18 +1,16 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom"; // ✅ Added Link here
 import HowItWorks from "./HowItWork";
 import AuthModal from "./AuthModal";
+import ContactModal from "./ContactModal";
 import "./Home.css";
-// import "./AllergyPreview.css";
 
 // Assets
 import logo from "../assets/Final Logo.png";
 import heroBg from "../assets/Screenshot 2025-10-31 163529.png";
-import dietaryImg from "../assets/Gemini_Generated_Image_87amg087amg087am.png";
-import scanImg from "../assets/Gemini_Generated_Image_qtoaroqtoaroqtoa (1).png";
-import resultImg from "../assets/Gemini_Generated_Image_p29w0qp29w0qp29w (1).png";
+import scanImg from "../assets/Allergen_Scanner_App_Video_Mockup.mp4";
 
-// Icons
+// === Icons ===
 const ShieldPlateIcon = () => (
   <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
     <path strokeLinecap="round" strokeLinejoin="round" d="M12 21C12 21 4.5 18 4.5 10.5V4.5L12 1.5L19.5 4.5V10.5C19.5 18 12 21 12 21Z" />
@@ -34,12 +32,16 @@ const GearsIcon = () => (
 function Home() {
   const navigate = useNavigate();
   const [showAuth, setShowAuth] = useState(false);
+  const [showContact, setShowContact] = useState(false);
 
+  // Modal controls
   const openAuthModal = () => setShowAuth(true);
   const closeAuthModal = () => setShowAuth(false);
+  const openContactModal = () => setShowContact(true);
+  const closeContactModal = () => setShowContact(false);
 
   return (
-    <div className={`main-app-container ${showAuth ? "blurred" : ""}`}>
+    <div className={`main-app-container ${showAuth || showContact ? "blurred" : ""}`}>
       {/* === Header === */}
       <header className="home-header">
         <div className="header-logo">
@@ -49,7 +51,15 @@ function Home() {
         <nav className="header-nav">
           <a href="#features">Features</a>
           <a href="#how-it-works">How It Works</a>
-          <a href="#contact">Contact Us</a>
+          <a
+            href="#contact"
+            onClick={(e) => {
+              e.preventDefault();
+              openContactModal();
+            }}
+          >
+            Contact Us
+          </a>
         </nav>
         <div className="header-actions">
           <button className="btn-gradient" onClick={openAuthModal}>
@@ -60,28 +70,25 @@ function Home() {
 
       {/* === Hero Section === */}
       <main className="hero-section" style={{ backgroundImage: `url(${heroBg})` }}>
-  <div className="hero-overlay"></div>
-  <div className="hero-content-wrapper side-by-side">
-    <div className="hero-content">
-      <h1>Scan. Detect. Live Healthy.</h1>
-      <p>
-      AllergyScanner is a mobile app that uses Al to scan food items, menus, or labels, instantly identifying ingredients and checking them against a user's allergy profile to determine if they're safe to eat.
-      </p>
-      <button className="btn-gradient" onClick={openAuthModal}>
-        Start Scanning Today
-      </button>
-    </div>
-
-    {/* --- App Preview (3 Screens Side-by-Side) --- */}
-    <div className="hero-app-preview-group">
-      <img src={dietaryImg} alt="Dietary Restrictions" className="app-preview-img" />
-      <img src={scanImg} alt="Food Scanning Demo" className="app-preview-img middle" />
-      <img src={resultImg} alt="Safe Result" className="app-preview-img" />
-    </div>
-  </div>
-</main>
-
-
+        <div className="hero-overlay"></div>
+        <div className="hero-content-wrapper side-by-side">
+          <div className="hero-content">
+            <h1>Scan. Detect. Live Healthy.</h1>
+            <p>
+              AllergyScanner is a mobile app that uses AI to scan food items, menus, or labels, instantly identifying
+              ingredients and checking them against your allergy profile to determine if they're safe to eat.
+            </p>
+            <button className="btn-gradient" onClick={openAuthModal}>
+              Start Scanning Today
+            </button>
+          </div>
+          <div className="hero-app-preview-group">
+            <div className="preview-layer video">
+              <video src={scanImg} autoPlay muted loop playsInline />
+            </div>
+          </div>
+        </div>
+      </main>
 
       {/* === Guardian Features === */}
       <div className="pattern-background-section">
@@ -109,10 +116,10 @@ function Home() {
           </div>
         </section>
 
-        {/* === How It Works === */}
-        <div id="how-it-works">
-          <HowItWorks />
-        </div>
+       <div id="how-it-works">
+  <HowItWorks openAuthModal={openAuthModal} />
+</div>
+
       </div>
 
       {/* === Footer === */}
@@ -130,39 +137,52 @@ function Home() {
             <h3>Quick Links</h3>
             <ul>
               <li><a href="/">Home</a></li>
-              <li><a href="/">Scanner</a></li>
-              <li><a href="/">Dashboard</a></li>
+              <li><Link to="/terms-of-use">Terms Of Use</Link></li>
+    <li><Link to="/privacy-policy">Privacy Policy</Link></li>
             </ul>
           </div>
 
           <div className="footer-column">
             <h3>Resources</h3>
             <ul>
-              <li><a href="/">About Allergens</a></li>
-              <li><a href="/">Food Safety</a></li>
-              <li><a href="/">FAQ</a></li>
+              <li><Link to="/about-allergens">About Allergens</Link></li>
+              <li><Link to="/food-safety">Food Safety</Link></li>
+              <li><Link to="/faq">FAQ</Link></li>
             </ul>
           </div>
 
           <div className="footer-column">
-            <h3>Connect</h3>
-            <div className="footer-icons">
-  <a href="tel:+911234567890"><i className="fas fa-phone"></i></a>
-  <a href="https://www.google.com" target="_blank" rel="noopener noreferrer"><i className="fab fa-google"></i></a>
-  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><i className="fab fa-twitter"></i></a>
+  <h3>Connect</h3>
+  <div className="footer-icons">
+    <a
+      href="#contact"
+      onClick={(e) => {
+        e.preventDefault();
+        openContactModal(); // Opens the Contact modal
+      }}
+    >
+      <i className="fas fa-envelope"></i>
+    </a>
+  </div>
 </div>
 
-          </div>
         </div>
+
         <div className="footer-bottom">
           <p>&copy; 2025 AllergenScanner. All rights reserved.</p>
         </div>
       </footer>
 
-      {/* === Auth Modal === */}
+      {/* === Modals === */}
       {showAuth && (
         <div className="auth-overlay active" onClick={closeAuthModal}>
           <AuthModal closeModal={closeAuthModal} />
+        </div>
+      )}
+
+      {showContact && (
+        <div className="auth-overlay active" onClick={closeContactModal}>
+          <ContactModal closeModal={closeContactModal} />
         </div>
       )}
     </div>

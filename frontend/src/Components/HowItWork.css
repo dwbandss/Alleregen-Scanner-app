@@ -71,9 +71,7 @@
 .step-icon-wrapper svg {
   width: 32px;
   height: 32px;
-  /* REMOVE color: currentColor; - color is now set by SVG's fill */
-  /* Keep fill: currentColor; if you want to use CSS color */
-  /* Or remove both if fill is set in SVG */
+ 
 }
 /* === END OF ICON STYLING === */
 

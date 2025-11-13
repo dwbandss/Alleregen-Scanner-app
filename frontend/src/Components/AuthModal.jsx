@@ -160,7 +160,7 @@ const AuthModal = ({ closeModal }) => {
                 {loading ? "Loading..." : isLogin ? "Login" : "Create Account"}
               </button>
 
-              <p className="social-text">or login with social platforms</p>
+              {/* <p className="social-text">or login with social platforms</p>
               <div className="social-btns">
                 <button type="button" aria-label="Sign in with Google">
                   <i className="fa-brands fa-google google"></i>
@@ -171,7 +171,7 @@ const AuthModal = ({ closeModal }) => {
                 <button type="button" aria-label="Sign in with Apple">
                   <i className="fa-brands fa-apple apple"></i>
                 </button>
-              </div>
+              </div> */}
             </form>
           </div>
         </div>

@@ -1,0 +1,60 @@
+
+.contact-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2147483647; 
+  -webkit-tap-highlight-color: transparent;
+  pointer-events: auto;
+}
+
+
+.contact-modal-container {
+  background: #d1d8d298;
+  color: #222;
+  width: 420px;
+  max-width: calc(100% - 32px);
+  padding: 22px;
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+  position: relative;
+  z-index: 2147483648; 
+  pointer-events: auto;
+}
+
+/* header */
+.contact-modal-header { display:flex; justify-content:space-between; align-items:center; }
+.close-btn { background:none; border:none; font-size:20px; cursor:pointer; color:#333; }
+
+/* ensure inputs are interactive */
+.contact-form { display:flex; flex-direction:column; gap:10px; margin-top:10px; }
+.contact-form input, .contact-form textarea {
+  padding:10px; border-radius:8px; border:1px solid #b3aaaa; font-size:14px; outline:none; background:#fff;
+  pointer-events: auto;
+}
+
+/* big visible send button */
+.btn-gradient {
+  margin-top:6px; background: linear-gradient(90deg,#6366f1,#8b5cf6); color:white; border:none; padding:10px; border-radius:8px; cursor:pointer;
+}
+
+
+.contact-modal-container input,
+.contact-modal-container textarea {
+  color: #000 !important;          
+  background-color: #fff !important; 
+  outline: none;
+}
+
+.contact-modal-container input::placeholder,
+.contact-modal-container textarea::placeholder {
+  color: #888 !important; 
+}
+
+.contact-modal-container {
+  z-index: 99999;
+  position: relative;
+}

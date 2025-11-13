@@ -1,13 +1,5 @@
-/* === Main App Container === */
-/* .main-app-container {
-  background: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
-  margin: 20px ;
-  max-width: 1240px;
-  overflow: hidden;
-} */
 
+/* === Main App Container === */
 .main-app-container {
   width: 100%;
   min-height: 100vh;
@@ -18,6 +10,7 @@
   box-shadow: none;
   overflow-x: hidden;
 }
+
 /* === Header / Navigation === */
 .home-header {
   display: flex;
@@ -26,22 +19,60 @@
   padding: 1.25rem 3rem;
   background: linear-gradient(90deg, #9cc4a7, #7b8295);
   color: #ffffff;
-  padding: 1rem 1.5rem;
   backdrop-filter: blur(10px);
   border-bottom: 1px solid #eee;
 }
 
-.header-logo { display: flex; align-items: center; gap: 12px; font-size: 1.25rem; font-weight: 600; color: #333; }
-.header-logo .logo { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
-.header-nav { display: flex; gap: 2.5rem; }
-.header-nav a { color: #555; font-weight: 500; position: relative; transition: color 0.3s ease; text-decoration: none; }
-.header-nav a:hover { color: #ffffff; }
-.header-nav a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 50%; transform: translateX(-50%); background-color: #4F46E5; transition: width 0.3s ease; }
-.header-nav a:hover::after { width: 100%; }
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+}
 
+.header-logo .logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.header-nav {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.header-nav a {
+  color: #555;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.header-nav a:hover {
+  color: #ffffff;
+}
+
+.header-nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4F46E5;
+  transition: width 0.3s ease;
+}
+
+.header-nav a:hover::after {
+  width: 100%;
+}
 
 /* === Hero Section === */
-/* === Hero Section (Updated for Side-by-Side Layout with Previews) === */
 .hero-section {
   position: relative;
   display: flex;
@@ -55,13 +86,8 @@
 }
 
 .hero-overlay {
-  background-image: url('../assets/Screenshot\ 2025-10-31\ 163529.png');
-  content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background: linear-gradient(
     90deg,
     rgba(93, 201, 180, 0.34) 0%,
@@ -81,7 +107,7 @@
   gap: 3rem;
 }
 
-/* === Left Text Content === */
+/* === LEFT TEXT === */
 .hero-content {
   flex: 1;
   max-width: 520px;
@@ -102,96 +128,68 @@
   margin-bottom: 2rem;
 }
 
-/* === Right Side App Preview (Three Phones) === */
+/* === HERO APP PREVIEW GROUP (Side-by-Side Crossed Phones) === */
 .hero-app-preview-group {
   flex: 1;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
-  gap: 1.5rem;
+  align-items: center;
+  gap: -40px; /* slight overlap for crossing effect */
+  perspective: 1200px;
 }
 
-.app-preview-img {
-  width: 200px;
-  height: 390px;
-  border: 5px solid #111;
-  border-radius: 25px;
-  background: #fff;
+.preview-layer {
+  width: 230px;
+  height: 460px;
+  border-radius: 37px;
   overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  object-fit: cover;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s ease;
 }
 
-.app-preview-img.middle {
-  transform: scale(1.1);
+.preview-layer img,
+.preview-layer video {
+  width: 978%;
+  height: 116%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Slight rotation for crossed effect
+.preview-layer:nth-child(1) {
+  transform: rotate(-5deg);
   z-index: 2;
 }
 
-.app-preview-img:hover {
-  transform: scale(1.15);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+.preview-layer:nth-child(2) {
+  transform: rotate(5deg);
+  z-index: 1;
+} */
+
+/* Hover effect */
+.hero-app-preview-group:hover .preview-layer:nth-child(1) {
+  transform: rotate(-2deg) scale(1.05);
 }
 
-/* === Responsive Adjustments === */
-@media (max-width: 1024px) {
-  .hero-content-wrapper {
-    flex-direction: column;
-    text-align: center;
-    gap: 2.5rem;
-  }
-
-  .hero-content {
-    text-align: center;
-    max-width: 100%;
-  }
-
-  .hero-app-preview-group {
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-
-  .app-preview-img {
-    width: 160px;
-    height: 340px;
-  }
-
-  .app-preview-img.middle {
-    transform: scale(1.05);
-  }
+.hero-app-preview-group:hover .preview-layer:nth-child(2) {
+  transform: rotate(2deg) scale(1.05);
 }
 
-@media (max-width: 768px) {
-  .hero-section {
-    padding: 3rem 1.5rem;
-  }
-
-  .hero-content h1 {
-    font-size: 2.4rem;
-  }
-
-  .app-preview-img {
-    width: 150px;
-    height: 280px;
-    border-width: 8px;
-  }
-
-  .app-preview-img.middle {
-    transform: scale(1);
-  }
+/* Floating animation */
+@keyframes floatLayer {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 
-@media (max-width: 480px) {
-  .app-preview-img {
-    width: 100px;
-    height: 210px;
-    border-width: 6px;
-  }
+.preview-layer:nth-child(1),
+.preview-layer:nth-child(2) {
+  animation: floatLayer 3.5s ease-in-out infinite;
 }
 
-
+/* === Guardian Features Section === */
 .hero-guardian-card:nth-child(1) {
     grid-column: 1 / span 2;
     flex-direction: row;
@@ -216,24 +214,21 @@
 .hero-guardian-icon-wrapper.skin svg { color: #3b82f6; }
 .hero-guardian-icon-wrapper.diet { background: #ecfdf5; }
 .hero-guardian-icon-wrapper.diet svg { color: #10b981; }
-.hero-guardian-card h3 { font-size: 0.9rem; font-weight: 500; color: #333; margin: 0; }
+.hero-guardian-card h3 { font-size: 0.9rem; font-weight: 500; color: #333; }
 
-
-/* === WRAPPER FOR BACKGROUND PATTERN === */
+/* === Wrapper Background Section === */
 .pattern-background-section {
-  /* background-image: url('../assets/Screenshot\ 2025-10-31\ 163529.png'); Check filename */
   background-repeat: no-repeat;
   background-size: auto;
-  background-color: #04684c3d; /* Base color */
-  padding: 0.1px 0; /* Prevents margin collapse */
+  background-color: #04684c3d;
+  padding: 0.1px 0;
 }
 
-
-/* === "Your Guardian for Every Part of Life" Section === */
+/* === Guardian Features Section Styling === */
 .guardian-features-section {
   padding: 4rem 3rem;
   text-align: center;
-  background-color: transparent; /* Make transparent to show pattern */
+  background-color: transparent;
 }
 
 .section-title {
@@ -250,8 +245,8 @@
   flex-wrap: wrap;
 }
 
-.guardian-card { /* Styles for cards within guardian-features-section */
-  background: #ffffff; /* Default background, overridden below */
+.guardian-card {
+  background: #ffffff;
   border-radius: 15px;
   padding: 2.5rem 2rem;
   max-width: 340px;
@@ -267,7 +262,6 @@
 
 .guardian-card:hover { transform: translateY(-10px); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1); }
 
-/* Specific styles for each guardian-card */
 .guardian-card.shield-plate { background: linear-gradient(135deg, #E0F2FE 0%, #FFFFFF 80%); border-color: #cce9fc; }
 .guardian-card.shield-plate .guardian-icon-wrapper { background: linear-gradient(135deg, #3B82F6 0%, #60A5FA 100%); }
 
@@ -277,7 +271,7 @@
 .guardian-card.secure-hub { background: linear-gradient(135deg, #F5F3FF 0%, #FFFFFF 80%); border-color: #e9e5ff; }
 .guardian-card.secure-hub .guardian-icon-wrapper { background: linear-gradient(135deg, #8B5CF6 0%, #A78BFA 100%); }
 
-.guardian-icon-wrapper { /* Shared styles for icon wrappers in this section */
+.guardian-icon-wrapper {
   width: 70px;
   height: 70px;
   border-radius: 50%;
@@ -292,20 +286,20 @@
 .guardian-card p { color: #555; margin-bottom: 1.5rem; flex-grow: 1; min-height: 60px; }
 .guardian-card .btn-gradient-blue { padding: 0.6rem 1.2rem; font-size: 0.9rem; }
 
-
 /* === How It Works Section inside pattern background === */
-/* Force transparent background on HowItWorks when inside the pattern div */
 .pattern-background-section #how-it-works .howitworks-section {
     background-color: transparent !important;
     border: none !important;
-    padding-top: 2rem; /* Adjust top spacing if needed */
-    padding-bottom: 4rem; /* Adjust bottom spacing if needed */
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+    flex: 1 0 auto;
 }
 
 /* === Footer Styling === */
 .footer {
-  background-color: #3f5246; /* ✅ Deep green tone from your image */
+  background-color: #3f5246;
   color: #959595;
+   margin-top: auto;
   padding: 60px 8%;
   font-family: "Poppins", sans-serif;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -390,18 +384,19 @@
 .footer-icons {
   display: flex;
   gap: 15px;
-  margin-top: 15px;
+  margin-top: 1px;
 }
 
 .footer-icons a {
-  color: #c9d1d9;
-  font-size: 1.2rem;
+  display: inline-block;
+  margin-right: 10px;
+  color: #959595;
+  font-size: 1.5rem;
   transition: all 0.3s ease;
 }
 
 .footer-icons a:hover {
-  color: #58a6ff;
-  transform: scale(1.1);
+  color: #508de2;
 }
 
 .footer-bottom {
@@ -413,10 +408,9 @@
 
 .footer-bottom p {
   font-size: 0.85rem;
-  color: #cbd5c0; /* ✅ Softer readable color */
+  color: #cbd5c0;
   letter-spacing: 0.4px;
 }
-
 
 /* === Responsive === */
 @media (max-width: 1024px) {
@@ -425,6 +419,7 @@
     .hero-guardian-cards { grid-template-columns: 1fr 1fr; width: auto; max-width: 500px; margin: 0 auto; }
     .hero-guardian-card:nth-child(1) { grid-column: 1 / span 2; }
 }
+
 @media (max-width: 768px) {
   .home-header { flex-direction: column; padding: 1rem 1.5rem; }
   .header-nav { margin-top: 1rem; flex-wrap: wrap; justify-content: center; gap: 1rem; }
@@ -436,9 +431,9 @@
   .guardian-features-section { padding: 3rem 1.5rem; }
   .footer-container { flex-direction: column; }
 }
+
 .blurred {
   pointer-events: none;
-  /* background-color: #10b981; */
   user-select: none;
   transition: all 0.3s ease;
 }
@@ -460,8 +455,5 @@
 
 /* Make sure modals adapt on smaller screens */
 @media (max-width: 768px) {
-  .auth-modal {
-    width: 90%;
-    height: auto;
-  }
+  .auth-modal { width: 90%; height: auto; }
 }
