@@ -36,7 +36,7 @@ export default function Home1({ user }) {
     const safeFoods = Math.round(
       (stored.filter((s) => s.safetyStatus === "Safe").length / (total || 1)) * 100
     );
-    const risks = stored.filter((s) => s.safetyStatus === "Unsafe").length;
+    const risks = stored.filter((s) => s.safetyStatus === "Risk").length;
 
     setDashboardStats({
       totalScans: total,
@@ -74,8 +74,8 @@ export default function Home1({ user }) {
         return "status-safe";
       case "Moderate":
         return "status-moderate";
-      case "Unsafe":
-        return "status-unsafe";
+      case "Risk":
+        return "status-Risk";
       default:
         return "";
     }
@@ -87,7 +87,7 @@ export default function Home1({ user }) {
         return <FaCheckCircle />;
       case "Moderate":
         return <FaExclamationTriangle />;
-      case "Unsafe":
+      case "Risk":
         return <FaTimes />;
       default:
         return null;

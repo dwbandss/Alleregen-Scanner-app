@@ -33,7 +33,6 @@
   box-shadow: 0 10px 30px rgba(90, 140, 110, 0.2);
 }
 
-
 /* ===== Stats Grid ===== */
 .stats-grid {
   display: grid;
@@ -115,26 +114,35 @@
   border-collapse: collapse;
   border-radius: 12px;
   overflow: hidden;
+  table-layout: fixed; /* ensures proper alignment */
+}
+
+.scan-table th,
+.scan-table td {
+  padding: 0.6rem 0.8rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  font-size: 0.85rem;
+  vertical-align: middle; /* align content in middle */
+  text-align: left;
 }
 
 .scan-table th {
   background: rgba(0, 150, 136, 0.1);
   color: #004d40;
-  text-align: left;
-  padding: 0.7rem 0.8rem;
   font-weight: 600;
-  font-size: 0.85rem;
-}
-
-.scan-table td {
-  padding: 0.6rem 0.8rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  font-size: 0.85rem;
 }
 
 .scan-table tr:hover {
   background-color: rgba(61, 103, 89, 0.15);
   transition: background 0.2s ease;
+}
+
+/* ===== Align flex content inside table cells ===== */
+.scan-table td > * {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap; /* for tags or badges */
+  gap: 4px;
 }
 
 /* ===== Allergen Tags ===== */
@@ -174,8 +182,8 @@
   color: #f9a825;
 }
 
-.status-unsafe {
-  background: rgba(255, 205, 210, 0.8);
+.status-Risk {
+  background: rgba(255 ,205, 210, 0.8);
   color: #c62828;
 }
 
@@ -185,10 +193,15 @@
   align-items: center;
   gap: 4px;
   color: #455a64;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+
 .clock-icon {
   color: #009688;
   opacity: 0.7;
+  flex-shrink: 0;
 }
 
 /* ===== Profile Setup Popup ===== */
@@ -282,66 +295,23 @@
   }
 }
 
-/* ===== Responsive Fixes ===== */
-@media (max-width: 768px) {
-  .home1-header {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 0.8rem;
-  }
-  .profile-logo {
-    max-width: 50px;
-  }
-  .stats-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-  .scan-history-section {
-    padding: 1rem 0.5rem;
-  }
-  .section-header h2 {
-    font-size: 1.2rem;
-  }
-}
-
-@media (max-width: 500px) {
-  .stats-grid {
-    grid-template-columns: 1fr;
-  }
-  .stat-card {
-    padding: 0.8rem;
-  }
-  .stat-value {
-    font-size: 1.4rem;
-  }
-  .profile-popup {
-    padding: 1rem;
-  }
-  .setup-btn {
-    padding: 0.5rem 1rem;
-  }
-  .scan-table th,
-  .scan-table td {
-    font-size: 0.75rem;
-    padding: 0.4rem 0.5rem;
-  }
-}
+/* ===== Header Flex (Right side date fix) ===== */
 .home1-header {
   display: flex;
-  flex-wrap: wrap; /* allow items to wrap */
-  justify-content: space-between; /* normal spacing on large screens */
+  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
-  padding: 1rem 1rem;
+  padding: 1rem;
   background: rgba(155, 152, 152, 0.4);
   border-radius: 16px;
   backdrop-filter: blur(15px);
-  gap: 0.5rem; /* space between wrapped items */
+  gap: 0.5rem;
   box-sizing: border-box;
 }
 
 .header-left {
-  flex: 1 1 60%; /* allow shrinking */
-  min-width: 0;  /* prevent overflow */
+  flex: 1 1 60%;
+  min-width: 0;
 }
 
 .header-left h1 {
@@ -349,7 +319,7 @@
   font-weight: 600;
   color: #004d40;
   margin: 0;
-  word-break: break-word; /* prevent overflow */
+  word-break: break-word;
 }
 
 .header-left p {
@@ -358,6 +328,17 @@
   word-break: break-word;
 }
 
+.header-right {
+  flex: 0 1 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+/* ===== Profile Logo ===== */
 .profile-logo {
   width: 50px;
   height: 50px;
@@ -368,26 +349,35 @@
   flex-shrink: 0;
 }
 
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
   .home1-header {
-    flex-direction: column; /* stack items */
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
     text-align: center;
-    padding: 0.8rem;
   }
 
   .header-left {
-    flex: 1 1 100%; /* full width */
+    flex: 1 1 100%;
     margin-bottom: 0.5rem;
   }
 
-  .header-left h1 {
-    font-size: 1.2rem;
+  .header-right {
+    justify-content: center;
+    flex: 1 1 100%;
+    margin-top: 0.3rem;
   }
 
-  .header-left p {
-    font-size: 0.8rem;
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .scan-history-section {
+    padding: 1rem 0.5rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.2rem;
   }
 
   .profile-logo {
@@ -397,12 +387,32 @@
 }
 
 @media (max-width: 500px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-card {
+    padding: 0.8rem;
+  }
+
+  .stat-value {
+    font-size: 1.4rem;
+  }
+
+  .scan-table th,
+  .scan-table td {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.5rem;
+  }
+
   .header-left h1 {
     font-size: 1rem;
   }
+
   .header-left p {
     font-size: 0.75rem;
   }
+
   .profile-logo {
     width: 40px;
     height: 40px;

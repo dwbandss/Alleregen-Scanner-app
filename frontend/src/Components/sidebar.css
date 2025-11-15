@@ -53,22 +53,36 @@
 }
 
 /* Sidebar menu items */
-.sidebar-item  {
+.sidebar-item {
   display: flex;
   align-items: center;
   gap: 12px;
   width: 100%;
   background: none;
   border: none;
-  padding: 10px 12px;
+  padding: 10px 15px; /* Increased horizontal padding */
   font-size: 16px;
   cursor: pointer;
   color: #1b4332;
   transition: background-color 0.2s ease;
+
+  /* Fix text wrapping */
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
+
 .sidebar-item svg {
   flex-shrink: 0;
+  width: 20px;  /* Set consistent icon size */
+  height: 20px;
 }
+
+.sidebar-item span {
+  flex: 1 1 auto;  /* Take up remaining space */
+  min-width: 0;    /* Important for flex text truncation */
+}
+
 .sidebar-item:hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
@@ -112,3 +126,54 @@
   background-color: #b7e4c7;
   transform: scale(1.05);
 }
+/* Sidebar menu scroll - REMOVE overflow-y to avoid scroll */
+.sidebar-menu {
+  flex: 1 1 auto;           /* Fill remaining space */
+  padding-bottom: 20px;     /* Avoid last item hiding under footer */
+  /* Removed overflow-y: auto; */
+}
+
+/* Sidebar menu items */
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #1b4332;
+  transition: background-color 0.2s ease;
+
+  /* Allow wrapping but prevent expanding sidebar height */
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.sidebar-item svg {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+/* Limit span width so text wraps nicely within sidebar */
+.sidebar-item span {
+  display: inline-block;
+  max-width: 160px;  /* Adjust this to fit sidebar width nicely */
+  vertical-align: middle;
+}
+
+/* Hover and active styles stay same */
+.sidebar-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-item.active {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #1b4332;
+  border-left: 4px solid #4caf50;
+}
+

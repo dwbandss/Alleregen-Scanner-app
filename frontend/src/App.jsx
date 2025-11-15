@@ -27,17 +27,24 @@ function AppWrapper() {
 
   // Listen for token changes (login/logout)
   useEffect(() => {
-    const handleStorageChange = () => setToken(localStorage.getItem("token"));
+    const handleStorageChange = () =>
+      setToken(localStorage.getItem("token"));
     window.addEventListener("storage", handleStorageChange);
     return () => window.removeEventListener("storage", handleStorageChange);
   }, []);
+
+  // Update token from AuthModal
+  const updateToken = (newToken) => {
+    setToken(newToken);
+  };
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     setToken(null);
   };
 
-  const PrivateRoute = ({ children }) => (token ? children : <Navigate to="/" />);
+  const PrivateRoute = ({ children }) =>
+    token ? children : <Navigate to="/" />;
 
   return (
     <>
@@ -78,7 +85,12 @@ function AppWrapper() {
         <Routes>
           <Route
             path="/auth"
-            element={<AuthModal closeModal={() => window.history.back()} />}
+            element={
+              <AuthModal
+                updateToken={updateToken}
+                closeModal={() => window.history.back()}
+              />
+            }
           />
         </Routes>
       )}
