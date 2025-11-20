@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaEdit, FaPlusCircle } from "react-icons/fa";
-import "./MyProfile.css";
+import "./Myprofile.css";
 import API from "../api/api.js";
 import toast from "react-hot-toast";
 
