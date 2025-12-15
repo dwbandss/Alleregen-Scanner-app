@@ -1,28 +1,32 @@
 # Allergen Scanner App
 
 ## Project Overview
-A web/mobile application that scans food products and detects allergens or ingredients of concern (barcode or text scanning). Provide the problem this solves and target user.
+A web/mobile application that scans food and detects allergens and gives instant result/warning based on their allergens.
+
+Our opportunity: Deliver an instant, accurate, AI-powered solution that users trust and value enough to pay for.
+
 
 ## Features
 
-Scan food product barcodes or input ingredients manually
+Scan food images from Quick Scan
 
 Detect and highlight allergenic components
 
 User-configurable allergen preferences
+
+AI assistant to ask their querries related to it
 
 ## Live Demo
 Live deployment link:
 https://alleregen-scanner-app.vercel.app
 
 ## Technologies Used
-List the tech stack:
 
-Frontend: React / Next.js / etc.
+Frontend: React 
 
-Backend: Node.js / Express / etc.
+Backend: Node.js / Express 
 
-Scanner libraries, APIs if used
+Scanner libraries, APIs 
 
 ## Installation & Setup
 
@@ -34,16 +38,19 @@ git clone https://github.com/dwbandss/Alleregen-Scanner-app.git
 Install dependencies
 
 cd AllergenScanner
+
 npm install
 
 
 To start the application
 
 cd frontend
+
 npm run dev
 
 To start the backend
 
 cd backend
+
 nodemon server.js/node server.js
 
