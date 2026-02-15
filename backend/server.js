@@ -1,5 +1,8 @@
-import express from "express";
 import dotenv from "dotenv";
+dotenv.config();
+
+// console.log("ENV TEST:", process.env.RESEND_API_KEY);
+import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 // import multer from "multer";
@@ -17,7 +20,7 @@ import passwordRoutes from "./routes/passwordRoutes.js";
 import contactRoutes from "./routes/contactRoutes.js";
 import profileRoutes from "./routes/profileRoutes.js";
 
-dotenv.config();
+
 
 // --- MONGO CONNECTION ---
 mongoose
